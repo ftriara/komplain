@@ -113,6 +113,3 @@ Route::middleware([
 */
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::resource('/admin/pembeli', BarangController::class);
-Route::resource('/admin/riwayat-tindakan', Riwayat_TindakanController::class);
