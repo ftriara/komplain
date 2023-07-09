@@ -16,6 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('tindakan');
             $table->date('tanggal_tindakan');
+            $table->date('tanggal_selesai');
             $table->unsignedBigInteger('id_komplain');
             $table->foreign('id_komplain')->references('id')->on('komplain');
             $table->unsignedBigInteger('id_petugas');

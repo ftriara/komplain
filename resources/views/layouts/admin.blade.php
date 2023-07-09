@@ -53,5 +53,5 @@
     </div>
     @include('partials.admin.script')
 </body>
-
+@yield('script')
 </html>

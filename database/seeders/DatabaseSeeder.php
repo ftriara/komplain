@@ -28,6 +28,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             BarangSeeder::class,
         ]);
+        $this->call([
+            PetugasSeeder::class,
+        ]);
 
         // $this->call([
         //     BarangSeeder::class,

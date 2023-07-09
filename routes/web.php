@@ -45,8 +45,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', function() {
         return view('pages.admin.index');
     })->name('admin.index');
-    Route::get('/admin/data-pengajuan-garansi', [DataPengajuanGaransiController::class, 'index'])->name('admin.dataPengajuanGaransi.index');
-    Route::get('/admin/data-riwayat-tindakan', [DataRiwayatTindakanController::class, 'index'])->name('admin.dataRiwayatTindakan.index');
+    
+    Route::get('/admin/dataPengajuanGaransi', [DataPengajuanGaransiController::class, 'index'])->name('admin.dataPengajuanGaransi.index');
+    Route::get('/admin/dataRiwayatTindakan', [DataRiwayatTindakanController::class, 'index'])->name('admin.dataRiwayatTindakan.index');
+    Route::get('/admin/dataRiwayatTindakan/{id}/edit', [DataRiwayatTindakanController::class, 'edit']) -> name('admin.dataRiwayatTindakan.edit');
+    Route::put('/admin/dataRiwayatTindakan/{id}', [DataRiwayatTindakanController::class, 'update']) -> name('admin.dataRiwayatTindakan.update');
 });
 
 Route::middleware(['auth', 'manager'])->group(function () {

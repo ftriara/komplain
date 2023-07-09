@@ -1,11 +1,15 @@
 <footer>
     <div class="footer clearfix mb-0 text-muted">
         <div class="float-start">
-            <p>2021 &copy; Mazer</p>
+            <p>2023 &copy; Pemrograman Web</p>
         </div>
         <div class="float-end">
-            <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                    href="https://saugi.me">Saugi</a></p>
+            <div>
+                <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
+                <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+                <a href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/" target="_blank" class="footer-link me-4">Documentation</a>
+                <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank" class="footer-link me-4">Support</a>
+            </div>
         </div>
     </div>
 </footer>
