@@ -69,7 +69,7 @@
                         @endforeach
                     </select>
                 </div>
-            </td>
+              </td>
               <td>
                 <div class="card-body">
                   <div class="demo-inline-spacing">
