@@ -18,12 +18,6 @@ class DataRiwayatTindakanController extends Controller
     {
         $historis = Histori::all();
         $petugasList = Petugas::pluck('nama', 'id');
-
-       
-
-        
-
-
         return view('pages.admin.DataRiwayatTindakan.index', [
             'complains' => Komplain::all(),
             'barangs' => Barang::all(),
