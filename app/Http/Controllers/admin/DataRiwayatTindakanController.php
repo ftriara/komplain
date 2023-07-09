@@ -2,67 +2,77 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Models\Riwayat_Tindakan;
+use App\Models\Barang;
+use App\Models\Merk;
+use App\Models\Komplain;
+use App\Models\Histori;
+use App\Models\Petugas;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class DataRiwayatTindakanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
+    
     public function index()
     {
-        return view('pages.admin.dataRiwayatTindakan.index', [
-            'riwayat_tindakan' => Riwayat_Tindakan::all()
+        $historis = Histori::all();
+
+        
+        return view('pages.admin.DataRiwayatTindakan.index', [
+            'complains' => Komplain::all(),
+            'barangs' => Barang::all(),
+            'merks' => Merk::all(),
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'Tindakan' => ['required', 'string'],
+            'tanggal_pembelian' => ['required', 'date'],
+            'tanggal_selesai' => ['required', 'date'],
+            'id_petugas' => ['required', 'exists:staffs,id'],
+        ]);
+
+        if(!$validated){
+            return redirect()->route('pages.admin.dataRiwayatTindakan.index')->with('error', 'validated failed!');
+        }
+
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Riwayat_Tindakan $riwayat_Tindakan)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $validated = $request->validate([
+            'Tindakan' => ['required', 'string'],
+            'tanggal_pembelian' => ['required', 'date'],
+            'tanggal_selesai' => ['required', 'date'],
+            'id_petugas' => ['required', 'exists:staffs,id'],
+        ]);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Riwayat_Tindakan $riwayat_Tindakan)
-    {
-        //
-    }
+        $histori = Histori::find($id);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Riwayat_Tindakan $riwayat_Tindakan)
-    {
-        //
-    }
+        if (!$histori) {
+            return redirect()->route('admin.dataRiwayatTindakan.index')->with('error', 'Merk not found');
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Riwayat_Tindakan $riwayat_Tindakan)
+        $histori->tindakan = $validated['tindakan'];
+        $histori->tanggal_pembelian = $validated['tanggal_pembelian'];
+        $histori->tanggal_selesai = $validated['tanggal_selesai'];
+        $histori->id_petugas = $validated['id_petugas'];
+        $histori->save();
+
+        return redirect()->route('admin.dataRiwayatTindakan.index')->with('success', 'Data merk berhasil diperbarui.');
+    }
+   
+    public function edit($id)
     {
-        //
+        $histori = Histori::find($id);
+
+            if (!$histori) {
+                return redirect()->route('admin.dataRiwayatTindakan.index')->with('error', 'Merk not found');
+            }
+
+            return view('pages.admin.dataRiwayatTindakan.edit', ['histori' => $histori]);
     }
 }
