@@ -7,7 +7,7 @@
     <table class="table table-striped table-dark table-bordered">
       <thead>
         <tr>
-          <th scope="col">Id</th>
+          
           <th scope="col">Id Komplain</th>
           <th scope="col">Nama Barang</th>
           <th scope="col">Merk</th>
@@ -22,7 +22,7 @@
         @foreach ($complains as $complain)
             <tr>
               
-              <td>{{ $complain->id }}</td>
+              
               <td>{{ $complain->id }}</td>
               <td>{{ $complain->barang->nama }}</td>
               <td>{{ $complain->barang->merk->nama }}</td>
