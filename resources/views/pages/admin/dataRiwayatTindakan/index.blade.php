@@ -61,6 +61,16 @@
                 </div>
               </td>
               <td>
+                <div class="mt-2 mb-3">
+                    
+                    <select class="form-select form-select-lg" name="id_petugas" id="id_petugas">
+                        @foreach ($petugasList as $id => $nama)
+                            <option value="{{ $id }}">{{ $nama }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </td>
+              <td>
                 <div class="card-body">
                   <div class="demo-inline-spacing">
                     <button type="button" class="btn rounded-pill btn-primary">Simpan</button>
