@@ -11,6 +11,9 @@ use App\Http\Controllers\pembeli\ComplainController;
 use App\Http\Controllers\pembeli\StatusAjuanController;
 use App\Http\Controllers\pembeli\AjukanComplainController;
 use App\Http\Controllers\PembeliController;
+use App\Http\Controllers\manager\ComplainByBarangController;
+use App\Http\Controllers\manager\ComplainByMerkController;
+use App\Http\Controllers\manager\ComplainByMonthController;
 use App\Http\Middleware\PembeliMiddleware;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -53,6 +56,10 @@ Route::middleware(['auth', 'manager'])->group(function () {
     Route::get('/manager', function () {
         return view('pages.manager.index');
     })->name('manager.index');
+    Route::get('/manager/complain_by_barang', [ComplainByBarangController::class, 'index'])->name('manager.ComplainByBarang.index');
+    Route::get('/manager/complain_by_merk', [ComplainByMerkController::class, 'index'])->name('manager.ComplainByMerk.index');
+    Route::get('/manager/complain_by_month', [ComplainByMonthController::class, 'index'])->name('manager.ComplainByMonth.index');
+
 });
 
 Route::middleware(['auth', 'administrator'])->group(function () {

@@ -37,6 +37,9 @@ class LoginController extends Controller
         else if ($user->role == 'Administrator'){
             return Redirect::intended('/administrator');
         }
+        else if ($user->role == 'Manager'){
+            return Redirect::intended('/manager');
+        }
     }
     /**
      * Where to redirect users after login.
