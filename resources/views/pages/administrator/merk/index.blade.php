@@ -14,10 +14,11 @@
             <form action="{{ route('administrator.merk.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="nama">Nama Merk:</label>
-                    <input type="text" name="nama" id="nama" class="form-control">
+                    <label for="nama" class="margin-form">Nama Merk :</label>
+                    <input type="text" name="nama" id="nama" class="form-control custom-input">
+                    <button type="submit" class="btn btn-primary custom-input">Tambah</button>
                 </div>
-                <button type="submit" class="btn btn-primary">Tambah</button>
+                
             </form>
             <table class="table">
                 <thead>
@@ -33,11 +34,11 @@
                         <th  scope="row">{{ $merk->id }}</th>
                         <td>{{ $merk->nama }}</td>
                         <td>
-                            <div class="demo-inline-spacing">
+                            <div class="demo-inline-spacing" style="display: flex; justify-content: flex-end; align-items: center;>
                                 <form action="{{ route('administrator.merk.update', $merk->id) }}" method="POST" id="formEdit" enctype="multipart/form-data">
                                     @method('PUT')
                                     @csrf
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">Edit</button>
+                                    <button type="button" class="btn btn-primary  custom-size" data-bs-toggle="modal" data-bs-target="#basicModal">Edit</button>
                                     <!-- Create Modal -->
                                     <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
@@ -77,7 +78,7 @@
                                     
                                     @method('DELETE')
                                     @csrf
-                                    <div class="demo-inline-spacing">
+                                    <div class="demo-inline-spacing" >
                                     <button type="submit" class="btn btn-danger">Hapus</button>   
                                     </div> 
                                 </form>

@@ -105,3 +105,19 @@
   text-align: center;
   margin-top: 1rem;
 }
+
+.custom-input {
+  max-width: 300px; /* Atur lebar maksimum sesuai kebutuhan */
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
+
+.margin-form{
+  margin-left: 25px;
+}
+
+.custom-size{
+  justify-content: right;
+ 
+}
+
