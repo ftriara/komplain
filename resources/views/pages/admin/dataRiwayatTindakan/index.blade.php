@@ -4,7 +4,7 @@
 
 <h3>Riwayat Tindakan</h3>
 <div class="table-responsive text-nowrap mt-4">
-    <table class="table table-striped table-dark table-bordered">
+    <table class="table table-striped table-dark table-bordered text-center">
       <thead>
         <tr>
           <th scope="col">Id</th>
@@ -19,8 +19,8 @@
         </tr>
       </thead>
       <tbody class="table-hover">
-        <form action="{{ route('admin.dataRiwayatTindakan.store') }}" method="post">
-
+        <form action="{{ route('admin.dataRiwayatTindakan.store') }}" method="POST">
+          @csrf
           @foreach ($complains as $complain)
               <tr>
                 
@@ -29,11 +29,11 @@
                 <td>{{ $complain->barang->nama }}</td>
                 <td>{{ $complain->barang->merk->nama }}</td>
                 <td>
-                  <div class="btn-group">
+                  {{-- <div class="btn-group">
                     <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownButton" name="tindakan">
                       Diperbaiki
                     </button>
-                    <ul class="dropdown-menu" data-dropdown-id="{{ $loop->iteration }}">
+                    <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="javascript:void(0);" data-value="Diperbaiki" name="tindakan">Diperbaiki</a></li>
                       <li><a class="dropdown-item" href="javascript:void(0);" data-value="Diganti Baru" name="tindakan">Diganti Baru</a></li>
                     </ul>
@@ -50,12 +50,12 @@
                         });
                       });
                     });
-                  </script>
-                  {{-- <select class="form-select" autofocus>
-                    <option selected name="tindakan">Pilih</option>
-                    <option value="1" name="tindakan">Diperbaiki</option>
-                    <option value="2" name="tindakan">Diganti Baru</option>
-                  </select> --}}
+                  </script> --}}
+                  <select class="form-select" name="tindakan" id="tindakan">
+                    <option selected>Pilih</option>
+                    <option value="1">Diperbaiki</option>
+                    <option value="2">Diganti Baru</option>
+                  </select>
                 </td>
                 <td>
                   <div class="col-md-10">
@@ -80,7 +80,7 @@
                 <td>
                   <div class="card-body">
                     <div class="demo-inline-spacing">
-                        <a href="" type="submit" name="submit" class="btn rounded-pill btn-primary">Simpan</a>
+                        <input type="submit" class="btn rounded-pill btn-primary" value="Simpan" />
                     </div>
                   </div>
                 </td>

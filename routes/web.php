@@ -51,6 +51,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     
     Route::get('/admin/dataPengajuanGaransi', [DataPengajuanGaransiController::class, 'index'])->name('admin.dataPengajuanGaransi.index');
     Route::post('/admin/update-complain-status', [DataPengajuanGaransiController::class, 'updateStatus'])->name('admin.complain.updateStatus');
+    
     Route::get('/admin/dataRiwayatTindakan', [DataRiwayatTindakanController::class, 'index'])->name('admin.dataRiwayatTindakan.index');
     Route::post('/admin/dataRiwayatTindakan', [DataRiwayatTindakanController::class, 'store'])->name('admin.dataRiwayatTindakan.store');
     Route::get('/admin/dataRiwayatTindakan/{id}/edit', [DataRiwayatTindakanController::class, 'edit']) -> name('admin.dataRiwayatTindakan.edit');

@@ -4,7 +4,7 @@
 
 <h3>Riwayat Pengajuan</h3>
 <div>
-    <table class="table table-striped table-dark table-bordered">
+    <table class="table table-striped table-dark table-bordered text-center">
         <thead>
             <tr>
                 <th scope="col">Id</th>
