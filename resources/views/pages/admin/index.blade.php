@@ -10,7 +10,7 @@
                         <div class="card-body">
                             <h5 class="card-title text-primary">Anda Berhasil Log in!</h5>
                             <p class="mb-4"> Selamat Datang di website Pengajuan Garansi! yuk intip data pengajuan garansi. </p>
-                            <a href="{{ route('administrator.barang.index') }}" class="btn btn-sm btn-outline-primary">klik disini</a>
+                            <a href="{{ route('admin.dataPengajuanGaransi.index') }}" class="btn btn-sm btn-outline-primary">klik disini</a>
                         </div>
                     </div>
                     <div class="col-sm-5 text-center text-sm-left">
