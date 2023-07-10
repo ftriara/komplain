@@ -8,7 +8,7 @@
 
     <!-- Responsive Table -->
     <div class="card">
-        <h5 class="card-header">status Ajuan Garansi</h5>
+        <h5 class="card-header">Data Pengajuan Garansi</h5>
         <div class="table text-center">
             <table class="table">
                 <thead>

@@ -8,7 +8,7 @@
 
     <!-- Responsive Table -->
     <div class="card">
-        <h5 class="card-header">status Ajuan Garansi</h5>
+        <h5 class="card-header">Data Riwayat Tindakan</h5>
         <div class="table text-center">
             <table class="table">
                 <thead>
@@ -31,7 +31,7 @@
                       <tr>
                         
                         <td>{{ $loop->iteration }}</td>
-                        <td><div name="id_komplain">{{ $complain->id }}</div></td>
+                        <td>{{ $complain->id }}</td>
                         <td>{{ $complain->barang->nama }}</td>
                         <td>{{ $complain->barang->merk->nama }}</td>
                         <td>
