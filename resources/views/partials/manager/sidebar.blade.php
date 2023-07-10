@@ -7,19 +7,19 @@
 </li>
 <li class="menu-item {{ request()->routeIs('manager.ComplainByBarang.index') ? 'active' : '' }}">
     <a href="{{ route('manager.ComplainByBarang.index') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bxs-paper-plane"></i>
+        <i class="menu-icon tf-icons bx bxs-book"></i>
         <div data-i18n="Basic">Complain By Barang</div>
     </a>
 </li>
 <li class="menu-item {{ request()->routeIs('manager.ComplainByMerk.index') ? 'active' : '' }}">
     <a href="{{ route('manager.ComplainByMerk.index') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bxs-comment-check"></i>
+        <i class="menu-icon tf-icons bx bxs-book"></i>
         <div data-i18n="Tables">Complain By Merk</div>
     </a>
 </li>
 <li class="menu-item {{ request()->routeIs('manager.ComplainByMonth.index') ? 'active' : '' }}">
     <a href="{{ route('manager.ComplainByMonth.index') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bxs-comment-check"></i>
+        <i class="menu-icon tf-icons bx bxs-book"></i>
         <div data-i18n="Tables">Complain By Month</div>
     </a>
 </li>
