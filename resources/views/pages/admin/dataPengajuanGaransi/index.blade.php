@@ -28,7 +28,7 @@
                 <td>{{ $complain->tanggal_pembelian }}</td>
                 <td>{{ $complain->batas_garansi }}</td>
                 <td>{{ $complain->keluhan }}</td>
-                <td>{{ $complain->foto }}</td>
+                <td><img src="{{ asset('storage/foto/'. $complain->foto) }}" width="100"></td>
 
                 <td>
                     <div class="btn-group">

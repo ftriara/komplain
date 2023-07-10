@@ -22,7 +22,7 @@
         @foreach ($complains as $complain)
             <tr>
               
-              
+              <td>{{ $loop->iteration }}</td>
               <td>{{ $complain->id }}</td>
               <td>{{ $complain->barang->nama }}</td>
               <td>{{ $complain->barang->merk->nama }}</td>
@@ -73,7 +73,9 @@
               <td>
                 <div class="card-body">
                   <div class="demo-inline-spacing">
-                    <button type="button" class="btn rounded-pill btn-primary">Simpan</button>
+                    <form action="">
+                      <button type="button" class="btn rounded-pill btn-primary">Simpan</button>
+                    </form>
                   </div>
                 </div>
               </td>
