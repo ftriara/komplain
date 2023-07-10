@@ -7,7 +7,6 @@
     <table class="table table-striped table-dark table-bordered">
       <thead>
         <tr>
-          <th scope="col">Id</th>
           <th scope="col">Id Komplain</th>
           <th scope="col">Nama Barang</th>
           <th scope="col">Merk</th>
