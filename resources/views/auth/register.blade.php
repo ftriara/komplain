@@ -16,7 +16,7 @@
     <div class="row h-100">
     <div class="col-lg-5 col-12">
         <div id="auth-left" style="padding-top: 50px; padding-bottom: 50px;">
-            <h1 class="auth-title" style="font-size: xxx-large;">Sign Up</h1>
+            <h1 class="auth-title" style="font-size: xxx-large;">Register</h1>
             <p class="auth-subtitle mb-4" style="font-size: large;">Input your data to register to our website.</p>
 
             <form action="{{ route('register') }}" method="POST">
@@ -51,7 +51,7 @@
                         <i class="bi bi-shield-lock"></i>
                     </div>
                 </div>
-                <button class="btn btn-primary btn-block btn-lg shadow-lg mt-4">Sign Up</button>
+                <button class="btn btn-primary btn-block btn-lg shadow-lg mt-4">Register</button>
             </form>
             <div class="text-center mt-5 text-lg fs-4">
                 <p class='text-gray-600' style="font-size: large;">Already have an account? <a href="{{ route('login') }}" class="font-bold">Log

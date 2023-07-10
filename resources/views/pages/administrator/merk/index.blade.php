@@ -34,45 +34,41 @@
                         <th  scope="row">{{ $merk->id }}</th>
                         <td>{{ $merk->nama }}</td>
                         <td style="width: 100px;">
-                            <div class="demo-inline-spacing" style="display: flex; justify-content: flex-end; align-items: center;>
-                                <form action="{{ route('administrator.merk.update', $merk->id) }}" method="POST" id="formEdit" enctype="multipart/form-data">
-                                    @method('PUT')
-                                    @csrf
-                                    <button type="button" class="btn btn-primary  custom-size" data-bs-toggle="modal" data-bs-target="#basicModal">Edit</button>
-                                    <!-- Create Modal -->
-                                    <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
-                                                <button
-                                                    type="button"
-                                                    class="btn-close"
-                                                    data-bs-dismiss="modal"
-                                                    aria-label="Close"
-                                                ></button>
-                                                </div>
-                                                <div class="modal-body">
+                            <div class="demo-inline-spacing" style="display: flex; justify-content: flex-end; align-items: center;">
+                                <button type="button" class="btn btn-primary custom-size" data-bs-toggle="modal" data-bs-target="#basicModal{{ $merk->id }}">Edit</button>
+                                <!-- Create Modal -->
+                                <div class="modal fade" id="basicModal{{ $merk->id }}" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel1">Edit Merk</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col mb-3">
-                                                    <label for="nameBasic" class="form-label">Nama</label>
-                                                    <input type="text" id="nameBasic" class="form-control" name="nama" placeholder="Enter Name" />
+                                                        <label for="nameBasic{{ $merk->id }}" class="form-label">Nama</label>
+                                                        <input type="text" id="nameBasic{{ $merk->id }}" class="form-control" name="nama" placeholder="Enter Name" />
                                                     </div>
                                                 </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <input type="submit" id="editSubmit" class="d-none">
+                                            </div>
+                                            <div class="modal-footer">
                                                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" onclick="submitEdit()">Save changes</button>
-                                                </div>
+                                                <button type="button" class="btn btn-primary" onclick="submitEdit('{{ $merk->id }}')">Save changes</button>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <!-- end Create Modal -->
+                                <form action="{{ route('administrator.merk.update', $merk->id) }}" method="POST" class="form-edit d-none" enctype="multipart/form-data">
+                                    @method('PUT')
+                                    @csrf
+                                    <input type="text" id="namaEdit{{ $merk->id }}" name="nama" class="d-none">
+                                    <input type="submit" id="editSubmit{{ $merk->id }}" class="d-none">
                                 </form>
                             </div>
-                            <!-- end Create Modal -->
-                        </div>
                         </td>
+                        
                         <td style="width: 100px;">
                             <form action="{{ route('administrator.merk.destroy', $merk->id) }}" method="POST">        
                                 @method('DELETE')
@@ -101,10 +97,10 @@
         $('#createSubmit').click();
     }
 
-    
-
-    function submitEdit(){
-        $('#editSubmit').click();
+    function submitEdit(id) {
+        var nama = document.getElementById("nameBasic" + id).value;
+        document.getElementById("namaEdit" + id).value = nama;
+        document.getElementById("editSubmit" + id).click();
     }
 
     function submitDelete(){
@@ -114,5 +110,7 @@
     function submitForm(){
         document.getElementById("formEdit").submit();
     }
+
+    
 </script>
 @endsection

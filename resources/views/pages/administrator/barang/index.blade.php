@@ -45,58 +45,52 @@
                         <td>{{ $barang->merk->nama }}</td>
                         <td style="width: 100px;">
                             <div class="demo-inline-spacing" style="display: flex; justify-content: flex-end;">
-                                <form action="{{ route('administrator.barang.update', $barang->id) }}" method="POST" id="formEdit" enctype="multipart/form-data">
-                                    @method('PUT')
-                                    @csrf
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">Edit</button>
-                                    <!-- Create Modal -->
-                                    <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal{{ $barang->id }}">Edit</button>
+                                <!-- Create Modal -->
+                                <div class="modal fade" id="basicModal{{ $barang->id }}" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel1">Edit Barang</h5>
-                                                <button
-                                                    type="button"
-                                                    class="btn-close"
-                                                    data-bs-dismiss="modal"
-                                                    aria-label="Close"
-                                                ></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col mb-3">
-                                                    <label for="nameBasic" class="form-label">Nama</label>
-                                                    <input type="text" id="nameBasic" class="form-control" name="nama" placeholder="Mouse wireless" />
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('administrator.barang.update', $barang->id) }}" method="POST" id="formEdit{{ $barang->id }}" enctype="multipart/form-data">
+                                                    @method('PUT')
+                                                    @csrf
+                                                    <div class="row mb-3">
+                                                        <div class="col">
+                                                            <label for="nameBasic{{ $barang->id }}" class="form-label">Nama</label>
+                                                            <input type="text" id="nameBasic{{ $barang->id }}" class="form-control" name="nama" placeholder="Mouse wireless" />
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col mb-3">
-                                                    <label for="nameBasic" class="form-label">Harga</label>
-                                                    <input type="text" id="nameBasic" class="form-control" name="harga" placeholder="150000" />
+                                                    <div class="row mb-3">
+                                                        <div class="col">
+                                                            <label for="hargaBasic{{ $barang->id }}" class="form-label">Harga</label>
+                                                            <input type="text" id="hargaBasic{{ $barang->id }}" class="form-control" name="harga" placeholder="150000" />
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
-                                                    <label for="nameBasic" class="form-label">Merk</label>
-                                                        <select class="form-select form-select-lg" name="id_merk" id= "id_merk">
+                                                    <div class="row mb-3">
+                                                        <label for="merkBasic{{ $barang->id }}" class="form-label">Merk</label>
+                                                        <select class="form-select form-select-lg" name="id_merk" id="merkBasic{{ $barang->id }}">
                                                             @foreach ($merkList as $id => $nama)
-                                                            <option value="{{ $id }}">{{ $nama }}</option>
-                                                        @endforeach
+                                                                <option value="{{ $id }}">{{ $nama }}</option>
+                                                            @endforeach
                                                         </select>
-                                                </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <input type="submit" id="editSubmit" class="d-none">
-                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary" onclick="submitEdit()">Save changes</button>
-                                                </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary" onclick="submitEdit('{{ $barang->id }}')">Save changes</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                             <!-- end Create Modal -->
-                        </div>
                         </td>
+                        
                         <td style="width: 100px;">
                             <form action="{{ route('administrator.barang.destroy', $barang->id) }}" method="POST"> 
                                 @method('DELETE')
@@ -122,10 +116,8 @@
         $('#createSubmit').click();
     }
 
-    
-
-    function submitEdit(){
-        $('#editSubmit').click();
+    function submitEdit(id) {
+        document.getElementById("formEdit" + id).submit();
     }
 
     function submitDelete(){
