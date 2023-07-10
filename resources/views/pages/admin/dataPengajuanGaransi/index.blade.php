@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>Riwayat Tindakan</h3>
+<h3>Riwayat Pengajuan</h3>
 <div>
     <table class="table table-striped table-dark table-bordered">
         <thead>

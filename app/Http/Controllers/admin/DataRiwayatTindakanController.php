@@ -30,7 +30,7 @@ class DataRiwayatTindakanController extends Controller
     {
         $validated = $request->validate([
             'tindakan' => ['required', 'string'],
-            'tanggal_pembelian' => ['required', 'date'],
+            'tanggal_tindakan' => ['required', 'date'],
             'tanggal_selesai' => ['required', 'date'],
             'id_petugas' => ['required', 'exists:petugas,id'],
             'id_komplain' => ['required', 'exists:komplain,id'],
@@ -42,7 +42,7 @@ class DataRiwayatTindakanController extends Controller
 
         Histori::create($validated);
 
-        return redirect()->route('pages.admin.dataRiwayatTindakan.index')->with('success', 'validated succes!');
+        return redirect()->route('pages.admin.dataRiwayatTindakan.index')->with('success', 'Data berhasil disimpan!');
 
     }
 }
