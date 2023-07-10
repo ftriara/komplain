@@ -29,6 +29,9 @@ class DataRiwayatTindakanController extends Controller
     public function store(Request $request)
     {
 
+        $data = $request->get('tindakan');
+        ddd($data);
+
         $validatedData = $request->validate([
             'tindakan' => ['required', 'string'],
             'tanggal_tindakan' => ['required', 'date'],

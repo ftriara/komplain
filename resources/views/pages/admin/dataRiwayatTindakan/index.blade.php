@@ -31,7 +31,7 @@
                       <tr>
                         
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $complain->id }}</td>
+                        <td><input type="hidden" name="id_komplain" value="{{ $complain->id }}">{{ $complain->id }}</td>
                         <td>{{ $complain->barang->nama }}</td>
                         <td>{{ $complain->barang->merk->nama }}</td>
                         <td>
