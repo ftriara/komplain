@@ -13,18 +13,18 @@
             <form action="{{ route('administrator.barang.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="nama">Nama Merk:</label>
-                    <input type="text" name="nama" id="nama" class="form-control">
-                    <label for="harga">Harga:</label>
-                    <input type="number" name="harga" id="harga" class="form-control">
-                    <label for="largeSelect" class="form-label">Merk</label>
-                            <select class="form-select form-select-lg" name="id_merk" id= "id_merk">
+                    <label for="nama" class="margin-form">Nama Barang:</label>
+                    <input type="text" name="nama" id="nama" class="form-control custom-input">
+                    <label for="harga" class="margin-form">Harga:</label>
+                    <input type="number" name="harga" id="harga" class="form-control custom-input">
+                    <label for="largeSelect" class="form-label margin-form">Merk</label>
+                            <select class="form-select form-select-lg custom-input" name="id_merk" id= "id_merk">
                                 @foreach ($merkList as $id => $nama)
                                 <option value="{{ $id }}">{{ $nama }}</option>
                             @endforeach
                         </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Tambah</button>
+                <button type="submit" class="btn btn-primary custom-input">Tambah</button>
             </form>
             <table class="table">
                 <thead>
@@ -43,8 +43,8 @@
                         <td>{{ $barang->nama }}</td>
                         <td>{{ $barang->harga }}</td>
                         <td>{{ $barang->merk->nama }}</td>
-                        <td>
-                            <div class="demo-inline-spacing">
+                        <td style="width: 100px;">
+                            <div class="demo-inline-spacing" style="display: flex; justify-content: flex-end;">
                                 <form action="{{ route('administrator.barang.update', $barang->id) }}" method="POST" id="formEdit" enctype="multipart/form-data">
                                     @method('PUT')
                                     @csrf
@@ -97,11 +97,11 @@
                             <!-- end Create Modal -->
                         </div>
                         </td>
-                        <td>
+                        <td style="width: 100px;">
                             <form action="{{ route('administrator.barang.destroy', $barang->id) }}" method="POST"> 
                                 @method('DELETE')
                                 @csrf
-                                <div class="demo-inline-spacing">
+                                <div class="demo-inline-spacing" style="display: flex; justify-content: center; align-items: center;">
                                 <button type="submit" class="btn btn-danger">Hapus</button>   
                                 </div> 
                             </form>

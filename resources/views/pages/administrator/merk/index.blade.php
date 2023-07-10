@@ -33,7 +33,7 @@
                     <tr>
                         <th  scope="row">{{ $merk->id }}</th>
                         <td>{{ $merk->nama }}</td>
-                        <td>
+                        <td style="width: 100px;">
                             <div class="demo-inline-spacing" style="display: flex; justify-content: flex-end; align-items: center;>
                                 <form action="{{ route('administrator.merk.update', $merk->id) }}" method="POST" id="formEdit" enctype="multipart/form-data">
                                     @method('PUT')
@@ -73,18 +73,15 @@
                             <!-- end Create Modal -->
                         </div>
                         </td>
-                        <td>
-                                <form action="{{ route('administrator.merk.destroy', $merk->id) }}" method="POST">
-                                    
-                                    @method('DELETE')
-                                    @csrf
-                                    <div class="demo-inline-spacing" >
-                                    <button type="submit" class="btn btn-danger">Hapus</button>   
-                                    </div> 
-                                </form>
-                          
+                        <td style="width: 100px;">
+                            <form action="{{ route('administrator.merk.destroy', $merk->id) }}" method="POST">        
+                                @method('DELETE')
+                                @csrf
+                                <div class="demo-inline-spacing" >
+                                <button type="submit" class="btn btn-danger">Hapus</button>   
+                                </div> 
+                            </form>
                         </td>
-                            
                     </tr>
                     @endforeach
                 </tbody>
