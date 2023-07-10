@@ -26,4 +26,15 @@ class DataPengajuanGaransiController extends Controller
             'merk' => Merk::all(),
         ]);
     }
+    public function updateStatus(Request $request)
+    {
+        $complainId = $request->input('complainId');
+        $newStatus = $request->input('newStatus');
+
+        $complain = Komplain::find($complainId);
+        $complain->status = $newStatus;
+        $complain->save();
+
+        return response()->json(['message' => 'Status berhasil diperbarui'], 200);
+    }
 }

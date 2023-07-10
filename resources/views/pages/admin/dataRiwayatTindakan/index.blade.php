@@ -7,7 +7,7 @@
     <table class="table table-striped table-dark table-bordered">
       <thead>
         <tr>
-          
+          <th scope="col">Id</th>
           <th scope="col">Id Komplain</th>
           <th scope="col">Nama Barang</th>
           <th scope="col">Merk</th>
@@ -82,6 +82,21 @@
         @endforeach
       </tbody>
     </table>
-  </div>
+</div>
+@endsection
 
+@section('script')
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      var dropdownButton = document.getElementById("dropdownButton{{ $complain->id }}");
+      var dropdownItems = dropdownButton.nextElementSibling.querySelectorAll(".dropdown-item");
+
+      dropdownItems.forEach(function(item) {
+          item.addEventListener("click", function() {
+              var selectedValue = item.getAttribute("data-value");
+              dropdownButton.innerHTML = selectedValue;
+          });
+      });
+  });
+</script>
 @endsection
