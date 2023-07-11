@@ -61,30 +61,45 @@
                             });
                           </script> --}}
                           <select class="form-select btn btn-secondary" name="tindakan">
-                              @if ($historis->where('id_komplain', $complain->id)->last()->tindakan == 'Diperbaiki')
-                                <option selected>{{ $historis->where('id_komplain', $complain->id)->last()->tindakan }}</option>
+                              @if ($historis->where('id_komplain', $complain->id)->last() == null)
+                                <option selected>Diperbaiki</option>
                                 <option value="Diganti Baru">Diganti Baru</option>
                               @elseif ($historis->where('id_komplain', $complain->id)->last()->tindakan == 'Diganti Baru')
                                 <option selected>{{ $historis->where('id_komplain', $complain->id)->last()->tindakan }}</option>
                                 <option value="Diperbaiki">Diperbaiki</option>
+                              @elseif($historis->where('id_komplain', $complain->id)->last()->tindakan == 'Diperbaiki')
+                                <option selected>{{ $historis->where('id_komplain', $complain->id)->last()->tindakan }}</option>
+                                <option value="Diganti Baru">Diganti Baru</option>
                               @endif
                           </select>
                         </td>
                         <td>
                           <div class="col-md-10">
-                              <input class="form-control" type="date" value="{{ $historis->where('id_komplain', $complain->id)->last()->tanggal_tindakan }}" id="tanggal_tindakan" name="tanggal_tindakan" />   
+                              @if ($historis->where('id_komplain', $complain->id)->last() == null)
+                                <input class="form-control" type="date" value="2023-07-11" id="tanggal_tindakan" name="tanggal_tindakan" />   
+                              @else
+                                <input class="form-control" type="date" value="{{ $historis->where('id_komplain', $complain->id)->last()->tanggal_tindakan }}" id="tanggal_tindakan" name="tanggal_tindakan" />
+                              @endif
                           </div>
                         </td>
                         <td>
                           <div class="col-md-10">
-                            <input class="form-control" type="date" value="{{ $historis->where('id_komplain', $complain->id)->last()->tanggal_selesai }}" id="tanggal_selesai" name="tanggal_selesai" /> 
+                            @if ($historis->where('id_komplain', $complain->id)->last() == null)
+                              <input class="form-control" type="date" value="2023-07-11" id="tanggal_selesai" name="tanggal_selesai" />   
+                            @else
+                              <input class="form-control" type="date" value="{{ $historis->where('id_komplain', $complain->id)->last()->tanggal_tindakan }}" id="tanggal_selesai" name="tanggal_selesai" />
+                            @endif
                           </div>
                         </td>
                         <td>
                           <div class="mt-2 mb-3">
                               
                               <select class="form-select form-select-lg" name="id_petugas" id="id_petugas">
-                                <option selected>{{ $historis->where('id_komplain', $complain->id)->last()->id_petugas }}</option>
+                                @if ($historis->where('id_komplain', $complain->id)->last() == null)
+                                  <option selected></option>   
+                                @else
+                                  <option selected>{{ $historis->where('id_komplain', $complain->id)->last()->id_petugas }}</option>
+                                @endif
                                   @foreach ($petugasList as $id => $nama)
                                       <option value="{{ $id }}">{{ $nama }}</option>
                                   @endforeach
