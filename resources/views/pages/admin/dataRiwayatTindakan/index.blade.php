@@ -45,6 +45,7 @@
                               <ul class="dropdown-menu" data-dropdown-id="{{ $complain->id }}">
                                 <li><a class="dropdown-item" href="javascript:void(0);" data-value="Diperbaiki" name="tindakan">Diperbaiki</a></li>
                                 <li><a class="dropdown-item" href="javascript:void(0);" data-value="Diganti Baru" name="tindakan">Diganti Baru</a></li>
+                                <li><a class="dropdown-item" href="javascript:void(0);" data-value="Diserahkan ke Admin" name="tindakan">Diserahkan ke Admin</a></li>
                               </ul>
                           </div>
                           <script>
@@ -64,12 +65,19 @@
                               @if ($historis->where('id_komplain', $complain->id)->last() == null)
                                 <option selected>Diperbaiki</option>
                                 <option value="Diganti Baru">Diganti Baru</option>
+                                <option value="Diserahkan ke Admin">Diserahkan ke Admin</option>
                               @elseif ($historis->where('id_komplain', $complain->id)->last()->tindakan == 'Diganti Baru')
                                 <option selected>{{ $historis->where('id_komplain', $complain->id)->last()->tindakan }}</option>
                                 <option value="Diperbaiki">Diperbaiki</option>
+                                <option value="Diserahkan ke Admin">Diserahkan ke Admin</option>
                               @elseif($historis->where('id_komplain', $complain->id)->last()->tindakan == 'Diperbaiki')
                                 <option selected>{{ $historis->where('id_komplain', $complain->id)->last()->tindakan }}</option>
                                 <option value="Diganti Baru">Diganti Baru</option>
+                                <option value="Diserahkan ke Admin">Diserahkan ke Admin</option>
+                              @elseif($historis->where('id_komplain', $complain->id)->last()->tindakan == 'Diserahkan ke Admin')
+                                <option selected>{{ $historis->where('id_komplain', $complain->id)->last()->tindakan }}</option>
+                                <option value="Diganti Baru">Diganti Baru</option>
+                                <option value="Diserahkan ke Admin">Diperbaiki</option>
                               @endif
                           </select>
                         </td>
