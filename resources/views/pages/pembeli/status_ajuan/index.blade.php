@@ -9,7 +9,7 @@
     <!-- Responsive Table -->
     <div class="card">
         <h5 class="card-header">status Ajuan Garansi</h5>
-        <div class="table-responsive text-nowrap">
+        <div class="table-responsive text-center">
             <table class="table">
                 <thead>
                     <tr class="text-nowrap">
@@ -35,7 +35,14 @@
                         <td>{{ $complain->batas_garansi }}</td>
                         <td>{{ $complain->keluhan }}</td>
                         <td><img src="{{ asset('storage/foto/'. $complain->foto) }}" width="100"></td>
-                        <td>{{ $complain->status }}</td>
+                        <td>
+                            {{ $complain->status }}
+                            @if ($complain->status == 'Selesai')
+                                <p style="color: green; font-weight:bold">Diambil tanggal: {{ $historis->where('id_komplain', $complain->id)->last()->tanggal_selesai }}</p>
+                            @else
+                                <p style="color: red; font-weight:bold">Belum dapat diambil</p>
+                            @endif
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Komplain;
 use App\Models\Barang;
+use App\Models\Histori;
 use App\Models\Merk;
 
 class StatusAjuanController extends Controller
@@ -17,6 +18,7 @@ class StatusAjuanController extends Controller
             'complains' => Komplain::all(),
             'barang' => Barang::all(),
             'merk' => Merk::all(),
+            'historis' => Histori::all(),
         ]);
     }
 }
