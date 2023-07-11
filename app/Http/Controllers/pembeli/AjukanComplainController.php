@@ -25,8 +25,7 @@ class AjukanComplainController extends Controller
             'tanggal_pembelian' => ['required', 'date'],
             'batas_garansi' => ['required', 'date'],
             'keluhan' => ['required', 'string'],
-            'id_merk' => ['required', 'int'],
-            'id_barang' => ['required', 'int'],
+            'id_barang_merk' => ['required', 'int'],
             'foto' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'], // Validasi untuk foto
         ]);
 
@@ -62,8 +61,7 @@ class AjukanComplainController extends Controller
         Komplain::Create([
             'tanggal_pembelian' => $validated['tanggal_pembelian'],
             'keluhan' => $validated['keluhan'],
-            'id_merk' => $validated['id_merk'],
-            'id_barang' => $validated['id_barang'],
+            'id_barang' => $validated['id_barang_merk'],
             'id_pembeli' => $idPembeli,
             'batas_garansi' => $validated['batas_garansi'],
             'status' => $status,
