@@ -12,11 +12,11 @@ class Riwayat_Tindakan extends Model
     protected $table = 'riwayat_tindakan';
 
     protected $fillable = [
-        'laporan',
-        'tanggal_tindakan',
         'tindakan',
+        'tanggal_tindakan',
+        'tanggal_selesai',
         'id_petugas',
-        'id_pengajuan'
+        'id_komplain'
     ];
 
     protected $hidden = [

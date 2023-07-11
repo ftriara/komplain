@@ -16,21 +16,39 @@ class DataRiwayatTindakanController extends Controller
     
     public function index()
     {
-        $historis = Histori::all();
+        // $historis = Histori::all();
+        // $kompains = Komplain::all();
+
+        // $komplain = 
+        // $histori = $historis->get('tindakan', 'tanggal_tindakan', 'tanggal_selesai', 'id_petugas', 'id_komplain');
+        
         $petugasList = Petugas::pluck('nama', 'id');
         return view('pages.admin.DataRiwayatTindakan.index', [
             'complains' => Komplain::all(),
             'barangs' => Barang::all(),
             'merks' => Merk::all(),
-            'petugasList' => $petugasList,
+            'historis' => Histori::all(),
+            'petugas' => Petugas::all(),
+            'petugasList' => $petugasList
         ]);
     }
 
     public function store(Request $request)
     {
 
-        $data = $request->get('tindakan');
-        ddd($data);
+        // $complainId = $request->input('complainId');
+        // $tindakan = $request->input('newStatus');
+
+        // $complain = Komplain::find($complainId);
+        // $complain->status = $newStatus;
+        // $complain->save();
+
+        // $all = $request->get('id_petugas');
+        // ddd($all);
+
+        // $id_komplain = $request->get('id_komplain');
+        // $historis = Histori::where('id_komplain', $id_komplain)->get();
+        // $histori = $historis->pluck('tindakan', 'tanggal_tindakan', 'tanggal_selesai', 'id_petugas', 'id_komplain');
 
         $validatedData = $request->validate([
             'tindakan' => ['required', 'string'],
@@ -42,12 +60,12 @@ class DataRiwayatTindakanController extends Controller
 
 
         if(!$validatedData){
-            return redirect()->route('pages.admin.dataRiwayatTindakan.index')->with('error', 'validated failed!');
+            return redirect()->route('admin.dataRiwayatTindakan.index')->with('error', 'validated failed!');
         }
 
         Histori::create($validatedData);
 
-        return redirect()->route('pages.admin.dataRiwayatTindakan.index')->with('success', 'Data berhasil disimpan!');
+        return redirect()->route('admin.dataRiwayatTindakan.index')->with('success', 'Data berhasil disimpan!');
 
     }
 }

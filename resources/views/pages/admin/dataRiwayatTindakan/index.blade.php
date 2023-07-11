@@ -25,7 +25,7 @@
                   </tr>
                 </thead>
                 <tbody class="table-hover">
-                  <form action="{{ route('admin.dataRiwayatTindakan.store') }}" method="POST">
+                  <form action="/admin/dataRiwayatTindakan" method="POST">
                     @csrf
                     @foreach ($complains as $complain)
                       <tr>
@@ -35,14 +35,17 @@
                         <td>{{ $complain->barang->nama }}</td>
                         <td>{{ $complain->barang->merk->nama }}</td>
                         <td>
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownButton" name="tindakan">
+                          {{-- <div class="btn-group"> --}}
+                            {{-- <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownButton" name="tindakan">
                               Diperbaiki
                             </button>
-                            <ul class="dropdown-menu">
-                              <li><a class="dropdown-item" href="javascript:void(0);" data-value="Diperbaiki" name="tindakan">Diperbaiki</a></li>
-                              <li><a class="dropdown-item" href="javascript:void(0);" data-value="Diganti Baru" name="tindakan">Diganti Baru</a></li>
-                            </ul>
+                            <ul class="dropdown-menu"> --}}
+                            {{-- <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownButton"
+                                  data-dropdown-id="{{ $complain->id }}">Diperbaiki</button>
+                              <ul class="dropdown-menu" data-dropdown-id="{{ $complain->id }}">
+                                <li><a class="dropdown-item" href="javascript:void(0);" data-value="Diperbaiki" name="tindakan">Diperbaiki</a></li>
+                                <li><a class="dropdown-item" href="javascript:void(0);" data-value="Diganti Baru" name="tindakan">Diganti Baru</a></li>
+                              </ul>
                           </div>
                           <script>
                             document.addEventListener("DOMContentLoaded", function() {
@@ -56,22 +59,32 @@
                                 });
                               });
                             });
-                          </script>
+                          </script> --}}
+                          <select class="form-select btn btn-secondary" name="tindakan">
+                              @if ($historis->where('id_komplain', $complain->id)->last()->tindakan == 'Diperbaiki')
+                                <option selected>{{ $historis->where('id_komplain', $complain->id)->last()->tindakan }}</option>
+                                <option value="Diganti Baru">Diganti Baru</option>
+                              @elseif ($historis->where('id_komplain', $complain->id)->last()->tindakan == 'Diganti Baru')
+                                <option selected>{{ $historis->where('id_komplain', $complain->id)->last()->tindakan }}</option>
+                                <option value="Diperbaiki">Diperbaiki</option>
+                              @endif
+                          </select>
                         </td>
                         <td>
                           <div class="col-md-10">
-                            <input class="form-control" type="date" value="2021-06-18" id="tanggal_tindakan" name="tanggal_tindakan"/>   
+                              <input class="form-control" type="date" value="{{ $historis->where('id_komplain', $complain->id)->last()->tanggal_tindakan }}" id="tanggal_tindakan" name="tanggal_tindakan" />   
                           </div>
                         </td>
                         <td>
                           <div class="col-md-10">
-                            <input class="form-control" type="date" value="2021-06-18" id="tanggal_selesai" name="tanggal_selesai"/>   
+                            <input class="form-control" type="date" value="{{ $historis->where('id_komplain', $complain->id)->last()->tanggal_selesai }}" id="tanggal_selesai" name="tanggal_selesai" /> 
                           </div>
                         </td>
                         <td>
                           <div class="mt-2 mb-3">
                               
                               <select class="form-select form-select-lg" name="id_petugas" id="id_petugas">
+                                <option selected>{{ $historis->where('id_komplain', $complain->id)->last()->id_petugas }}</option>
                                   @foreach ($petugasList as $id => $nama)
                                       <option value="{{ $id }}">{{ $nama }}</option>
                                   @endforeach
@@ -94,17 +107,45 @@
 @endsection
 
 @section('script')
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-      var dropdownButton = document.getElementById("dropdownButton{{ $complain->id }}");
-      var dropdownItems = dropdownButton.nextElementSibling.querySelectorAll(".dropdown-item");
+{{-- <script>
+  // document.addEventListener("DOMContentLoaded", function() {
+  //     var dropdownButton = document.getElementById("dropdownButton{{ $complain->id }}");
+  //     var dropdownItems = dropdownButton.nextElementSibling.querySelectorAll(".dropdown-item");
 
-      dropdownItems.forEach(function(item) {
-          item.addEventListener("click", function() {
-              var selectedValue = item.getAttribute("data-value");
-              dropdownButton.innerHTML = selectedValue;
-          });
-      });
-  });
-</script>
+  //     dropdownItems.forEach(function(item) {
+  //         item.addEventListener("click", function() {
+  //             var selectedValue = item.getAttribute("data-value");
+  //             dropdownButton.innerHTML = selectedValue;
+  //         });
+  //     });
+  // });
+
+  $('.dropdown-item').on('click', function (e) {
+            e.stopPropagation();
+            var value = $(this).data('value');
+            var dropdownId = $(this).closest('.dropdown-menu').data('dropdown-id');
+            var dropdownButton = $('.btn[data-dropdown-id="' + dropdownId + '"]');
+            dropdownButton.html(value);
+
+            var complainId = dropdownId;
+            var newStatus = value;
+
+            $.ajax({
+                url: '{{ route('admin.dataRiwayatTindakan.store') }}',
+                type: 'POST',
+                data: {
+                    complainId: complainId,
+                    newStatus: newStatus,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function (response) {
+                    console.log('Status berhasil diperbarui');
+                },
+                error: function (xhr, status, error) {
+                    console.log('Terjadi kesalahan: ' + error);
+                }
+            });
+        });
+</script> --}}
+
 @endsection

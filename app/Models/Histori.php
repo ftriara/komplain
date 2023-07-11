@@ -14,7 +14,7 @@ class Histori extends Model
     protected $fillable = [
         'tindakan',
         'tanggal_tindakan',
-        'tanggal_Selesai',
+        'tanggal_selesai',
         'id_komplain',
         'id_petugas'
     ];
