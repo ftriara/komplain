@@ -11,6 +11,7 @@ use App\Http\Controllers\administrator\BarangController;
 use App\Http\Controllers\pembeli\ComplainController;
 use App\Http\Controllers\pembeli\StatusAjuanController;
 use App\Http\Controllers\pembeli\AjukanComplainController;
+use App\Http\Controllers\manager\ComplainByPetugasController;
 use App\Http\Controllers\PembeliController;
 use App\Http\Controllers\manager\ComplainByBarangController;
 use App\Http\Controllers\manager\ComplainByMerkController;
@@ -31,8 +32,10 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+    return view('welcome', [
+        'title' => 'Home'
+    ]);
+});
 
 Route::middleware(['auth', 'pembeli'])->group(function () {
     Route::get('/pembeli', function () {
@@ -76,7 +79,7 @@ Route::middleware(['auth', 'manager'])->group(function () {
     Route::get('/manager/complain_by_barang', [ComplainByBarangController::class, 'index'])->name('manager.ComplainByBarang.index');
     Route::get('/manager/complain_by_merk', [ComplainByMerkController::class, 'index'])->name('manager.ComplainByMerk.index');
     Route::get('/manager/complain_by_month', [ComplainByMonthController::class, 'index'])->name('manager.ComplainByMonth.index');
-
+    Route::get('/manager/complain-by_petugas', [ComplainByPetugasController::class, 'index'])->name('manager.ComplainByPetugas.index');
 });
 
 Route::middleware(['auth', 'administrator'])->group(function () {

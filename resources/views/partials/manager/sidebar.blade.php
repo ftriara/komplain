@@ -23,6 +23,12 @@
         <div data-i18n="Tables">Complain By Month</div>
     </a>
 </li>
+<li class="menu-item {{ request()->routeIs('manager.ComplainByPetugas.index') ? 'active' : '' }}">
+    <a href="{{ route('manager.ComplainByPetugas.index') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bxs-book"></i>
+        <div data-i18n="Tables">Tindakan By Petugas</div>
+    </a>
+</li>
 <li class="menu-item">
         <a href="#" onclick="document.getElementById('logout').click();" class="menu-link">
         <i class="menu-icon tf-icons bx bxs-log-out"></i>
