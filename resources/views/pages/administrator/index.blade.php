@@ -9,7 +9,7 @@
                     <div class="col-sm-7">
                         <div class="card-body">
                             <h5 class="card-title text-primary">Anda Berhasil Log in!</h5>
-                            <p class="mb-4"> Selamat Datang di website Pengajuan Garansi! yuk intip data pengajuan garansi. </p>
+                            <p class="mb-4"> Hai Administrator! Selamat Datang di website Pengajuan Garansi! yuk intip Data Merk dan Data Barang. </p>
                             <a href="{{ route('administrator.barang.index') }}" class="btn btn-sm btn-outline-primary">klik disini</a>
                         </div>
                     </div>

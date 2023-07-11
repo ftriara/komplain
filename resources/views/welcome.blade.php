@@ -34,8 +34,8 @@
                                 <p class="hero-paragraph">Garansi barang elektronik <br>Tugas Besar Mata kuliah Pemrograman Web 2023 </p> 
                                 @if (Route::has('login')) 
                                 <div class="hero-cta">
-                                    <a class="button button-primary" href="{{ route('login') }}">Sign In</a>
-                                    <a class="button" href="{{ route('register') }}">Sign Up</a>
+                                    <a class="button button-primary" href="{{ route('login') }}">Log In</a>
+                                    <a class="button" href="{{ route('register') }}">Register</a>
                                 </div> 
                                 @endif
                             </div>

@@ -7,13 +7,13 @@
 </li>
 <li class="menu-item {{ request()->routeIs('administrator.merk.index') ? 'active' : '' }}">
     <a href="{{ route('administrator.merk.index') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bxs-paper-plane"></i>
+        <i class="menu-icon tf-icons bx bxs-package"></i>
         <div data-i18n="Basic">Merk</div>
     </a>
 </li>
 <li class="menu-item {{ request()->routeIs('administrator.barang.index') ? 'active' : '' }}">
     <a href="{{ route('administrator.barang.index') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bxs-comment-check"></i>
+        <i class="menu-icon tf-icons bx bxs-package"></i>
         <div data-i18n="Tables">Barang</div>
     </a>
 </li>
