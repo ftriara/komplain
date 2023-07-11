@@ -19,7 +19,7 @@
 </li>
 <li class="menu-item {{ request()->routeIs('admin.petugas.petugas') ? 'active' : '' }}">
     <a href="{{ route('admin.petugas.petugas') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bx-archive"></i>
+        <i class="menu-icon tf-icons bx bx-user"></i>
         <div data-i18n="Tables">Data Petugas</div>
     </a>
 </li>

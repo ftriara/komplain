@@ -25,11 +25,11 @@
                         <td style="text-align: center;">
                             <div style="display: flex; justify-content: center; gap: 5px">
                                 <a class="btn btn-warning" href="editPetugas{{ $petugas->id }}">
-                                    <i class="bi bi-pencil-square"></i>
+                                    <i class="bx bx-pencil"></i>
                                 </a>
                                 <form action="deletePetugas{{ $petugas->id }}" class="d-inline">
                                     <button class="btn btn-danger" onclick="return confirm('Are you sure?')">
-                                        <i class="bi bi-trash-fill"></i>
+                                        <i class="bx bx-trash"></i>
                                     </button>
                                 </form>
                             </div>
