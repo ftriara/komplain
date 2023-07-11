@@ -6,6 +6,7 @@ use App\Models\Barang;
 use App\Http\Controllers\admin\DataPengajuanGaransiController;
 use App\Http\Controllers\admin\DataRiwayatTindakanController;
 use App\Http\Controllers\admin\PetugasController;
+use App\Http\Controllers\admin\TindakanController;
 use App\Http\Controllers\administrator\MerkController;
 use App\Http\Controllers\administrator\BarangController;
 use App\Http\Controllers\pembeli\ComplainController;
@@ -56,13 +57,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dataPengajuanGaransi', [DataPengajuanGaransiController::class, 'index'])->name('admin.dataPengajuanGaransi.index');
     Route::post('/admin/update-complain-status', [DataPengajuanGaransiController::class, 'updateStatus'])->name('admin.complain.updateStatus');
     Route::get('/admin/dataPengajuanGaransi/{id}/dataTindakan', [DataPengajuanGaransiController::class, 'tindakan'])->name('admin.dataPengajuanGaransi.tindakan');
-    
     Route::get('/admin/dataRiwayatTindakan', [DataRiwayatTindakanController::class, 'index'])->name('admin.dataRiwayatTindakan.index');
     Route::post('/admin/dataRiwayatTindakan', [DataRiwayatTindakanController::class, 'store'])->name('admin.dataRiwayatTindakan.store');
     Route::get('/admin/dataRiwayatTindakan/{id}/edit', [DataRiwayatTindakanController::class, 'edit']) -> name('admin.dataRiwayatTindakan.edit');
     Route::put('/admin/dataRiwayatTindakan/{id}', [DataRiwayatTindakanController::class, 'update']) -> name('admin.dataRiwayatTindakan.update');
 
-    Route::put('');
+    Route::get('/admin/tindakan/{id}', [TindakanController::class, 'tindakan'])->name('admin.tindakan.tindakan');
+
     
     Route::get('/petugas', [PetugasController::class, 'index'])->name('admin.petugas.petugas');
     Route::get('/addPetugas', [PetugasController::class, 'addPetugas'])->name('admin.petugas.addPetugas');

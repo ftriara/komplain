@@ -68,4 +68,5 @@ class DataRiwayatTindakanController extends Controller
         return redirect()->route('admin.dataRiwayatTindakan.index')->with('success', 'Data berhasil disimpan!');
 
     }
+
 }
