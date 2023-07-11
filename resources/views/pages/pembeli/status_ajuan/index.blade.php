@@ -39,6 +39,10 @@
                             {{ $complain->status }}
                             @if ($complain->status == 'Selesai')
                                 <p style="color: green; font-weight:bold">Diambil tanggal: {{ $historis->where('id_komplain', $complain->id)->last()->tanggal_selesai }}</p>
+                            @elseif ($complain->status == 'Diambil')
+                                <p style="color: green; font-weight:bold">Diambil tanggal: {{ $complain->updated_at->format('Y-m-d') }}</p>
+                            @elseif ($complain->status == 'Ditolak')
+                                <p style="color: red; font-weight:bold">Diambil tanggal: {{ $complain->updated_at->format('Y-m-d') }}</p>
                             @else
                                 <p style="color: red; font-weight:bold">Belum dapat diambil</p>
                             @endif
