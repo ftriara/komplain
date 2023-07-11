@@ -107,7 +107,7 @@
                           </div>
                         </td>
                         <td>
-                          <button type="submit" name="submit" class="btn rounded-pill btn-primary">Simpan</button>
+                          <button type="submit" name="submit" class="btn rounded-pill btn-primary"> Simpan</button>
                         </td>
                       </tr>
                       @endforeach
