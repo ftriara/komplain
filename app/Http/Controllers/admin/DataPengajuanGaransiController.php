@@ -37,4 +37,9 @@ class DataPengajuanGaransiController extends Controller
 
         return response()->json(['message' => 'Status berhasil diperbarui'], 200);
     }
+
+    public function tindakan($id) {
+
+        return view('pages.admin.DataPengajuanGaransi.tindakan');
+    }
 }

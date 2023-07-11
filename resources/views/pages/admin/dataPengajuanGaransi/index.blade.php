@@ -35,9 +35,14 @@
                         <td>{{ $complain->batas_garansi }}</td>
                         <td>{{ $complain->keluhan }}</td>
                         <td><img src="{{ asset('storage/foto/'. $complain->foto) }}" width="100"></td>
-
-                        <td>
-                            <div class="btn-group">
+                        <td class='d-flex flex-column'>
+                            <form action="{{ route('admin.dataPengajuanGaransi.tindakan', $complain->id) }}" method="post">
+                                @method('get')
+                                <div class="my-2 d-flex flex-column justify-content-center" style="display: flex; justify-content: flex-end;">
+                                    <button type="submit" class="btn btn-primary">Tindakan</button>
+                                </div>
+                            </form>
+                            <div class="btn-group  d-flex flex-column justify-content-center">
                                 <button type="button" class="btn btn-primary dropdown-toggle"
                                     data-dropdown-id="{{ $complain->id }}">{{ $complain->status }}</button>
                                 <ul class="dropdown-menu" data-dropdown-id="{{ $complain->id }}">
@@ -88,7 +93,7 @@
             var newStatus = value;
 
             $.ajax({
-                url: '{{ route('admin.complain.updateStatus') }}',
+                url: '{{ route("admin.complain.updateStatus") }}',
                 type: 'POST',
                 data: {
                     complainId: complainId,
