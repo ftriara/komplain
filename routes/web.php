@@ -5,6 +5,7 @@ use App\Models\Merk;
 use App\Models\Barang;
 use App\Http\Controllers\admin\DataPengajuanGaransiController;
 use App\Http\Controllers\admin\DataRiwayatTindakanController;
+use App\Http\Controllers\admin\PetugasController;
 use App\Http\Controllers\administrator\MerkController;
 use App\Http\Controllers\administrator\BarangController;
 use App\Http\Controllers\pembeli\ComplainController;
@@ -56,6 +57,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/dataRiwayatTindakan', [DataRiwayatTindakanController::class, 'store'])->name('admin.dataRiwayatTindakan.store');
     Route::get('/admin/dataRiwayatTindakan/{id}/edit', [DataRiwayatTindakanController::class, 'edit']) -> name('admin.dataRiwayatTindakan.edit');
     Route::put('/admin/dataRiwayatTindakan/{id}', [DataRiwayatTindakanController::class, 'update']) -> name('admin.dataRiwayatTindakan.update');
+
+    
+    Route::get('/petugas', [PetugasController::class, 'index'])->name('admin.petugas.petugas');
+    Route::get('/addPetugas', [PetugasController::class, 'addPetugas'])->name('admin.petugas.addPetugas');
+    Route::post('/petugas', [PetugasController::class, 'store'])->name('admin.petugas.store');
+    Route::get('/editPetugas{id}', [PetugasController::class, 'editPetugas'])->name('admin.petugas.edit');
+    Route::post('/updatePetugas{id}', [PetugasController::class, 'updatePetugas'])->name('admin.petugas.update');
+    Route::get('/deletePetugas{id}', [PetugasController::class, 'deletePetugas'])->name('admin.petugas.destroy');
 });
 
 Route::middleware(['auth', 'manager'])->group(function () {

@@ -17,6 +17,12 @@
         <div data-i18n="Tables">Data Riwayat Tindakan</div>
     </a>
 </li>
+<li class="menu-item {{ request()->routeIs('admin.petugas.petugas') ? 'active' : '' }}">
+    <a href="{{ route('admin.petugas.petugas') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-archive"></i>
+        <div data-i18n="Tables">Data Petugas</div>
+    </a>
+</li>
 <li class="menu-item">
         <a href="#" onclick="document.getElementById('logout').click();" class="menu-link">
         <i class="menu-icon tf-icons bx bxs-log-out"></i>
